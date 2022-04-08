@@ -15,7 +15,7 @@
     -->
     <h1>Snack 1</h1>
     <p>
-    Creiamo un array contenente le partite di basket di un’ipotetica tappa del calendario.<br>Ogni array avrà una squadra di casa e una squadra ospite, punti fatti dalla squadra di casa e punti fatti dalla squadra ospite.<br>Stampiamo a schermo tutte le partite con questo schema.<br>Olimpia Milano - Cantù | 55-60    
+        Creiamo un array contenente le partite di basket di un’ipotetica tappa del calendario.<br>Ogni array avrà una squadra di casa e una squadra ospite, punti fatti dalla squadra di casa e punti fatti dalla squadra ospite.<br>Stampiamo a schermo tutte le partite con questo schema.<br>Olimpia Milano - Cantù | 55-60    
     </p>
 
     <!-- Svolgimento -->
@@ -123,7 +123,7 @@
     -->
     <h1>Snack 2</h1>
     <p>
-    Passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero.<br>Se tutto è ok stampare “Accesso riuscito”, altrimenti “Accesso negato”.
+        Passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero.<br>Se tutto è ok stampare “Accesso riuscito”, altrimenti “Accesso negato”.
     </p>
 
     <!-- Svolgimento -->
@@ -188,6 +188,38 @@
     ?>
 
     <hr>
+
+    <!--
+    Snack 4
+    Creare un array con 15 numeri casuali, tenendo conto che l’array non dovrà contenere lo stesso numero più di una volta.
+    -->
+    <h1>Snack 4</h1>
+    <p>
+        Creare un array con 15 numeri casuali, tenendo conto che l’array non dovrà contenere lo stesso numero più di una volta.
+    </p>
+
+    <!-- Svolgimento -->
+    <?php
+        // Definisco un array vuoto da riempire
+        $array_numeri = [];
+        // Definisco i parametri del contenuto dell'array
+        $num_min = 1;
+        $num_max = 99;
+        $lunghezza_array = 15;
+
+        // Genero un ciclo che, finché l'array non contiene 15 elementi, genera un numero casuale da 1 a 99 e, se non è già presente, lo inserisce nell'array
+        while (count($array_numeri) < $lunghezza_array) {
+            $numero_random = rand($num_min, $num_max);
+            if (!in_array($numero_random, $array_numeri)) {
+                $array_numeri[] = $numero_random;
+            }
+        }
+        echo implode(', ', $array_numeri);
+    ?>
+
+    <hr>
+
     
+
 </body>
 </html>
