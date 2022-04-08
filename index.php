@@ -117,6 +117,77 @@
 
     <hr>
 
+    <!--
+    Snack 2
+    Passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero. Se tutto è ok stampare “Accesso riuscito”, altrimenti “Accesso negato”.
+    -->
+    <h1>Snack 2</h1>
+    <p>
+    Passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero.<br>Se tutto è ok stampare “Accesso riuscito”, altrimenti “Accesso negato”.
+    </p>
+
+    <!-- Svolgimento -->
+    <!-- Form per inserimento del nome, dell'e-mail e dell'età -->
+    <form action="" method="get">
+        <label for="name">Nome:</label>
+        <input type="text" name="name" id="name">
+        <label for="email">E-mail:</label>
+        <input type="text" name="email" id="email">
+        <label for="age">Età:</label>
+        <input type="number" name="age" id="age">
+        <button>Accedi</button>
+    </form>
+
+    <!-- Definisco in PHP i dati name, email e age inseriti -->
+    <?php
+        $name = $_GET['name'];
+        $email = $_GET['email'];
+        $age = $_GET['age'];
+    ?>
+
+    <!-- Controllo che il nome inserito sia più lungo di 3 caratteri -->
+    <?php
+        if (strlen($name) > 3) {
+            $name_verified = true;
+        } else {
+            $name_verified = false;
+        }
+    ?>
+
+    <!-- Controllo che l'email contenga una chiocciola e un punto -->
+    <?php
+        if (strlen($email) > 0) {
+            $pos_chiocciola = strpos($email, '@', 1); // cerco la posizione della chiocciola a partire dal secondo carattere
+            // Se "posizione chiocciola" restituisce un valore (quindi la chiocciola è presente) cerco la posizione del punto successivo alla chiocciola (quindi la presenza del punto dopo la chiocciola)
+            if ($pos_chiocciola !== false && strpos($email, '.', $pos_chiocciola) !== false) {
+                $email_verified = true;
+            } else {
+                $email_verified = false;
+            }
+        } else {
+            $email_verified = false;
+        }
+    ?>
+
+    <!-- Controllo che l'età inserita sia un numero maggiore di zero-->
+    <?php
+        if (is_numeric($age) && $age > 0) {
+            $age_verified = true;
+        } else {
+            $age_verified = false;
+        }
+    ?>
+
+    <!-- se tutti i controlli restituiscono "true" stampo "Accesso riuscito", altrimenti "Accesso negato -->
+    <?php
+        if ($name_verified && $email_verified && $age_verified) {
+            echo 'Accesso riuscito';
+        } else {
+            echo 'Accesso negato';
+        }
+    ?>
+
+    <hr>
     
 </body>
 </html>
