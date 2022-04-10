@@ -219,7 +219,36 @@
 
     <hr>
 
-    
+    <!--
+    Snack 5
+    Prendere un paragrafo abbastanza lungo, contenente diverse frasi. Prendere il paragrafo e suddividerlo in tanti paragrafi. Ogni punto un nuovo paragrafo.
+    -->
+    <h1>Snack 5</h1>
+    <p>
+        Prendere un paragrafo abbastanza lungo, contenente diverse frasi. Prendere il paragrafo e suddividerlo in tanti paragrafi. Ogni punto un nuovo paragrafo.
+    </p>
+
+    <!-- Svolgimento -->
+    <!-- Testo di esempio -->
+    <?php
+        $example = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum enim eveniet odit nihil, dolor maxime omnis sed voluptas quos architecto, laborum culpa vero et laboriosam natus consequuntur id voluptatem quisquam. Asperiores, fuga beatae obcaecati, vitae, repellat quos maiores quibusdam commodi vel recusandae amet repudiandae itaque nam. Illum cupiditate natus ducimus ratione eum. Modi porro expedita ipsa sapiente officiis quae magnam temporibus, exercitationem aliquam ad facere nisi. Consequuntur officia sunt optio et assumenda minima temporibus.'
+    ?>
+    <!-- Form con textarea per inserire il testo (inserito un testo Lorem di esempio) -->
+    <form action="" method="get">
+        <textarea name="text" id="text" cols="90" rows="10" placeholder="Inserisci il testo da suddividere in paragrafi ad ogni punto..."><?php echo $example; ?></textarea>
+        <button>Suddividi in paragrafi</button>
+    </form>
+
+    <?php
+        // Catturo il testo inserito con il parametro $_GET
+        $text = $_GET['text'];
+        // Scompongo il testo in un array usando come separatore il punto
+        $array_text = explode('.', $text);
+        // Per ogni elemento dell'array creato stampo a video un nuovo paragrafo.
+        for ($_i=0; $_i < count($array_text); $_i++) { 
+            echo "<p> $array_text[$_i].</p>";
+        }
+    ?>
 
 </body>
 </html>
