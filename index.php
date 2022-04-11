@@ -140,9 +140,19 @@
 
     <!-- Definisco in PHP i dati name, email e age inseriti -->
     <?php
-        $name = $_GET['name'];
-        $email = $_GET['email'];
-        $age = $_GET['age'];
+        $name = $_GET['name'] ?? '';
+        $email = $_GET['email'] ?? '';
+        $age = $_GET['age'] ?? '';
+
+        /*
+        Questa forma di scrivere equivale a 
+
+        if (isset($_GET['name'])) {
+            $name = $_GET('name');
+        } else {
+            $name = '';
+        }
+        */
     ?>
 
     <!-- Controllo che il nome inserito sia più lungo di 3 caratteri -->
